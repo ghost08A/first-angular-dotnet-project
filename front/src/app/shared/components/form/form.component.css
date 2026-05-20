@@ -1,0 +1,61 @@
+.results {
+  margin-top: 1.5rem;
+}
+
+.results h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: #9bafaf;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.results-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.result-card {
+  flex: 1;
+  min-width: 140px;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(20, 123, 115, 0.2),
+    rgba(49, 152, 144, 0.2)
+  );
+  border: 1px solid #147b73;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.result-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 123, 115, 0.3),
+    rgba(49, 152, 144, 0.3)
+  );
+  border-color: #319890;
+  box-shadow: 0 4px 12px rgba(49, 152, 144, 0.15);
+}
+
+.result-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #9bafaf;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+.result-value {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d9e2f1;
+  font-family: "Quicksand", sans-serif;
+}

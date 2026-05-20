@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>ATM Withdrawal</h2>
+
+  <div class="control">
+    <label for="numberInput">Enter Amount</label>
+    <input
+      id="numberInput"
+      type="number"
+      formControlName="numberInput"
+      min="2"
+      placeholder="Enter an amount "
+    />
+    @if (numberInputIsInvalid) {
+      <p class="control-error">Please enter a number that is more than 0</p>
+    }
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="button" [disabled]="form.invalid">
+      Withdraw
+    </button>
+  </div>
+  @if (isSubmitted) {
+    <div class="results">
+      <hr />
+      <h3>Results</h3>
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-label">total 1000 </span>
+          <span class="result-value">{{ thousand }}</span>
+        </div>
+        <div class="result-card">
+          <span class="result-label">total 500 </span>
+          <span class="result-value">{{ fiveHundred }}</span>
+        </div>
+        <div class="result-card">
+          <span class="result-label">total 100 </span>
+          <span class="result-value">{{ oneHundred }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</form>

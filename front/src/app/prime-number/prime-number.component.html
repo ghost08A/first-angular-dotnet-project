@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Prime Number Checker</h2>
+
+  <div class="control">
+    <label for="numberInput">Enter a Number</label>
+    <input
+      id="numberInput"
+      type="number"
+      formControlName="numberInput"
+      min="2"
+      placeholder="Enter a number greater than 1"
+    />
+    @if (numberInputIsInvalid) {
+      <p class="control-error">Please enter a number</p>
+    }
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="button" [disabled]="form.invalid">
+      Calculate
+    </button>
+  </div>
+  @if (PreviousPrime !== null && NextPrime !== null) {
+    <div class="results">
+      <hr />
+      <h3>Results</h3>
+      <div class="results-grid">
+        <div class="result-card">
+          <span class="result-label">Previous Prime</span>
+          <span class="result-value">{{ PreviousPrime }}</span>
+        </div>
+        <div class="result-card">
+          <span class="result-label">Next Prime</span>
+          <span class="result-value">{{ NextPrime }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</form>
