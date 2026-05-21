@@ -24,20 +24,24 @@
     <div class="results">
       <hr />
       <h3>Results</h3>
-      <div class="results-grid">
-        <div class="result-card">
-          <span class="result-label">total 1000 </span>
-          <span class="result-value">{{ thousand }}</span>
+      @if (thousand === 0 && fiveHundred === 0 && oneHundred === 0) {
+        <p class="control-error">No money to withdraw</p>
+      } @else {
+        <div class="results-grid">
+          <div class="result-card">
+            <span class="result-label">total 1000 </span>
+            <span class="result-value">{{ thousand }}</span>
+          </div>
+          <div class="result-card">
+            <span class="result-label">total 500 </span>
+            <span class="result-value">{{ fiveHundred }}</span>
+          </div>
+          <div class="result-card">
+            <span class="result-label">total 100 </span>
+            <span class="result-value">{{ oneHundred }}</span>
+          </div>
         </div>
-        <div class="result-card">
-          <span class="result-label">total 500 </span>
-          <span class="result-value">{{ fiveHundred }}</span>
-        </div>
-        <div class="result-card">
-          <span class="result-label">total 100 </span>
-          <span class="result-value">{{ oneHundred }}</span>
-        </div>
-      </div>
+      }
     </div>
   }
 </form>

@@ -11,7 +11,7 @@
       placeholder="Enter a number greater than 1"
     />
     @if (numberInputIsInvalid) {
-      <p class="control-error">Please enter a number</p>
+      <p class="control-error">Please enter a number greater than 1</p>
     }
   </div>
 
@@ -20,18 +20,18 @@
       Calculate
     </button>
   </div>
-  @if (PreviousPrime !== null && NextPrime !== null) {
+  @if (isSubmitted) {
     <div class="results">
       <hr />
       <h3>Results</h3>
       <div class="results-grid">
         <div class="result-card">
           <span class="result-label">Previous Prime</span>
-          <span class="result-value">{{ PreviousPrime }}</span>
+          <span class="result-value">{{ PreviousPrime != -1 ? PreviousPrime : 'Not found' }}</span>
         </div>
         <div class="result-card">
           <span class="result-label">Next Prime</span>
-          <span class="result-value">{{ NextPrime }}</span>
+          <span class="result-value">{{ NextPrime != -1 ? NextPrime : 'Not found' }}</span>
         </div>
       </div>
     </div>

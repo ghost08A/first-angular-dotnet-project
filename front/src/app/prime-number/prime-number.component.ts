@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { PrimeService } from './primeService';
 
 function mustMoreThen1(control: AbstractControl) {
   if (Number(control.value) > 1) {
@@ -24,6 +25,8 @@ function mustMoreThen1(control: AbstractControl) {
 export class PrimeNumberComponent {
   PreviousPrime: number | null = null;
   NextPrime: number | null = null;
+  private primeService = inject(PrimeService);
+  isSubmitted = false;
 
   form = new FormGroup({
     numberInput: new FormControl<number | null>(null, {
@@ -44,7 +47,15 @@ export class PrimeNumberComponent {
       return;
     }
     const inputValue = Number(this.form.value.numberInput);
-    this.PreviousPrime = inputValue - 1;
-    this.NextPrime = inputValue + 1;
+    this.isSubmitted = true;
+    this.primeService.calculate(inputValue).subscribe({
+      next: (response) => {
+        this.PreviousPrime = response.previousPrime;
+        this.NextPrime = response.nextPrime;
+      },
+      error: (error) => {
+        console.error('Error calculating prime numbers:', error);
+      },
+    });
   }
 }

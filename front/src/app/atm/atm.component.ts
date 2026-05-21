@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AtmService } from './atm.service';
 
 function mustMoreThen0(control: AbstractControl) {
   if (control.value > 0) {
@@ -25,6 +26,9 @@ export class AtmComponent {
   thousand: null | number = null;
   fiveHundred: null | number = null;
   oneHundred: null | number = null;
+
+  private atmService = inject(AtmService);
+
   isSubmitted = false;
 
   form = new FormGroup({
@@ -44,9 +48,17 @@ export class AtmComponent {
     if (this.form.invalid) {
       return;
     }
-    this.thousand = 1000;
-    this.fiveHundred = 500;
-    this.oneHundred = 100;
     this.isSubmitted = true;
+    const amountToWithdraw = Number(this.form.value.numberInput);
+    this.atmService.withdraw(amountToWithdraw).subscribe({
+      next: (response) => {
+        this.thousand = response.thousand;
+        this.fiveHundred = response.fiveHundred;
+        this.oneHundred = response.oneHundred;
+      },
+      error: (error) => {
+        console.error('Error withdrawing money:', error);
+      },
+    });
   }
 }
