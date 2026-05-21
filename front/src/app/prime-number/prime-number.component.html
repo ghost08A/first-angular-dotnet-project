@@ -1,3 +1,5 @@
+<app-header />
+
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>Prime Number Checker</h2>
 
@@ -27,11 +29,15 @@
       <div class="results-grid">
         <div class="result-card">
           <span class="result-label">Previous Prime</span>
-          <span class="result-value">{{ PreviousPrime != -1 ? PreviousPrime : 'Not found' }}</span>
+          <span class="result-value">{{
+            PreviousPrime != -1 ? PreviousPrime : "Not found"
+          }}</span>
         </div>
         <div class="result-card">
           <span class="result-label">Next Prime</span>
-          <span class="result-value">{{ NextPrime != -1 ? NextPrime : 'Not found' }}</span>
+          <span class="result-value">{{
+            NextPrime != -1 ? NextPrime : "Not found"
+          }}</span>
         </div>
       </div>
     </div>

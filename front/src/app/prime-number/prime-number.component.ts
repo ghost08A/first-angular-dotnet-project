@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { PrimeService } from './primeService';
+import { AtmComponent } from '../atm/atm.component';
+import { HeaderComponent } from '../header/header.component';
 
 function mustMoreThen1(control: AbstractControl) {
   if (Number(control.value) > 1) {
@@ -18,7 +20,7 @@ function mustMoreThen1(control: AbstractControl) {
 @Component({
   selector: 'app-prime-number',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AtmComponent, HeaderComponent],
   templateUrl: './prime-number.component.html',
   styleUrl: '../shared/components/form/form.component.css',
 })

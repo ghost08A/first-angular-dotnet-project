@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AtmService } from './atm.service';
+import { HeaderComponent } from '../header/header.component';
 
 function mustMoreThen0(control: AbstractControl) {
   if (control.value > 0) {
@@ -18,7 +19,7 @@ function mustMoreThen0(control: AbstractControl) {
 @Component({
   selector: 'app-atm',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, HeaderComponent],
   templateUrl: './atm.component.html',
   styleUrl: '../shared/components/form/form.component.css',
 })

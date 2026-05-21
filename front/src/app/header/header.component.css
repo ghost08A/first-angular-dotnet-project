@@ -1,0 +1,27 @@
+.main-header {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #253c3c;
+  border-bottom: 2px solid #147b73;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+.logo {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  color: #d9e2f1;
+}
+.logout-btn {
+  background-color: transparent;
+  border: 1px solid #f98b75;
+  color: #f98b75;
+  transition: all 0.3s ease;
+}
+.logout-btn:hover {
+  background-color: #f98b75;
+  color: #142020;
+}
