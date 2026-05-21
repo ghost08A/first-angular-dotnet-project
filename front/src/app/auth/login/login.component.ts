@@ -10,13 +10,6 @@ import { Router } from '@angular/router';
 import { debounceTime, of } from 'rxjs';
 import { AuthService } from '../auth.service';
 
-function mustContainQuestionMark(control: AbstractControl) {
-  if (control.value.includes('?')) {
-    return null;
-  }
-  return { doesNotContainQuestionMark: true };
-}
-
 let initalEmailValue = '';
 const savedForm = window.localStorage.getItem('saved-login-form');
 
@@ -85,13 +78,14 @@ export class LoginComponent implements OnInit {
       Email: this.form.value.email,
       Password: this.form.value.password,
     };
-    const subscription = this.authService
+    this.authService
       .login(enteredData.Email ?? '', enteredData.Password ?? '')
       .subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log('Login successful:', response);
           window.localStorage.removeItem('saved-login-form');
           this.isWrongPasswordAndEmail = false;
+          window.localStorage.setItem('token', response.token);
           this.router.navigate(['/home']);
         },
         error: (error) => {
@@ -99,6 +93,5 @@ export class LoginComponent implements OnInit {
           this.isWrongPasswordAndEmail = true;
         },
       });
-    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 }
